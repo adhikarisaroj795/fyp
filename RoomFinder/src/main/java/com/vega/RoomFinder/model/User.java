@@ -1,11 +1,13 @@
 package com.vega.RoomFinder.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class User
 {
     @Id
@@ -17,7 +19,8 @@ public class User
     private String address;
     private String gender;
     private String age;
-
+    @ManyToMany
+    private List< Role> roles;
     public User() {
     }
 
@@ -76,5 +79,14 @@ public class User
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public List<Role> getRoles()
+    {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
