@@ -30,13 +30,13 @@ public class RoleController {
     @PostMapping
     public Role addRole(@RequestBody Role role)
     {
-        return roleService.updateRole(role);
+        return roleService.addRole(role);
     }
 
     @PutMapping
     public Role updateRole(@RequestBody Role role)
     {
-        return roleService.addRole(role);
+        return roleService.updateRole(role);
     }
 
     @DeleteMapping("/{id}")

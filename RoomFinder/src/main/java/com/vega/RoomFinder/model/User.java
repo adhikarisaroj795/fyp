@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -13,12 +14,18 @@ public class User
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
+    @NotBlank(message = "user name is required")
     private String username;
     private String password;
     private String fullName;
     private String address;
     private String gender;
     private String age;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    List<ResourceFile> files;
     @ManyToMany
     private List< Role> roles;
     public User() {
@@ -88,5 +95,13 @@ public class User
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<ResourceFile> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<ResourceFile> files) {
+        this.files = files;
     }
 }

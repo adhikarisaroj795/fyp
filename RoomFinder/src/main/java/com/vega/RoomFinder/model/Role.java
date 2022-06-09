@@ -29,11 +29,11 @@ import java.util.List;
        return id;
    }
 
-    public Role(int id, String name, List<User> users) {
-        this.id = id;
-        this.name = name;
-        this.users = users;
-    }
+//    public Role(int id, String name, List<User> users) {
+//        this.id = id;
+//        this.name = name;
+//        this.users = users;
+//    }
 
     public void setId(int id) {
         this.id = id;
