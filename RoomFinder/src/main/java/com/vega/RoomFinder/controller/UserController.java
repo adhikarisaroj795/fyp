@@ -5,6 +5,7 @@ import com.vega.RoomFinder.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @RestController
 @RequestMapping("/users")
@@ -26,14 +27,14 @@ public class UserController {
         return userService.findById(id);
     }
     @PostMapping
-    public User addUser(@RequestBody User user)
+    public User addUser(@RequestBody @Valid User user)
     {
         return userService.addUser(user);
     }
 
 
     @PutMapping
-    public  User updateUser(@RequestBody User user)
+    public  User updateUser(@RequestBody @Valid User user)
     {
         return userService.updateUser(user);
     }
