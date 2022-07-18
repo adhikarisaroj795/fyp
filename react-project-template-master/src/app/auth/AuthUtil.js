@@ -14,5 +14,10 @@ const checkAuthenticated = () => {
      return token != null ;
 
 }
+const getToken =() => {
+    return localStorage.getItem("auth_token");
+}
+
+
 export default checkAuthenticated ;
-export  { setToken, clearToken};
+export  { setToken, clearToken, getToken};
